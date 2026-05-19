@@ -1,4 +1,4 @@
-package com.codeboss.ecommercelaravelkotlin.data.service
+package com.codeboss.ecommercelaravelkotlin.data.dataSource.remote.service
 
 import com.codeboss.ecommercelaravelkotlin.domain.model.AuthResponse
 import com.codeboss.ecommercelaravelkotlin.domain.model.LoginRequest

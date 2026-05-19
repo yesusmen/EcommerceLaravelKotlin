@@ -7,18 +7,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codeboss.ecommercelaravelkotlin.core.Config
-import com.codeboss.ecommercelaravelkotlin.data.service.AuthService
-import com.codeboss.ecommercelaravelkotlin.domain.model.LoginRequest
+import com.codeboss.ecommercelaravelkotlin.domain.model.AuthResponse
+import com.codeboss.ecommercelaravelkotlin.domain.useCases.auth.AuthUseCase
+import com.codeboss.ecommercelaravelkotlin.domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-
+    private val authUseCase: AuthUseCase
 ): ViewModel() {
 
     var state by mutableStateOf(LoginState())
@@ -27,6 +25,9 @@ class LoginViewModel @Inject constructor(
     var hiddePassword by mutableStateOf(true)
 
     var errorMessage by mutableStateOf("")
+
+    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
+        private set
 
     fun onChangeEmail(email: String){
         state = state.copy(email = email)
@@ -38,15 +39,10 @@ class LoginViewModel @Inject constructor(
 
     fun login() = viewModelScope.launch {
         if (isValidForm()){
-            val retrofit = Retrofit
-                .Builder()
-                .baseUrl(Config.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val authService = retrofit.create(AuthService::class.java)
-            val result = authService.login(LoginRequest(state.email, state.password))
-            Log.d("LoginViewModel", "Result: ${result.body()}")
+            loginResponse = Response.Loading
+            val result = authUseCase.login(state.email, state.password)
+            loginResponse = result
+            Log.d("LoginViewModel", "Result: $loginResponse")
         }
     }
 
