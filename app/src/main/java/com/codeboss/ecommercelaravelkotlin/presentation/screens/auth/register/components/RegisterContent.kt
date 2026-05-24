@@ -69,8 +69,8 @@ fun RegisterContent(
     LaunchedEffect(vm.errorMessage) {
         if (vm.errorMessage != ""){
             Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
         }
-        vm.errorMessage = ""
     }
 
     Box(
@@ -278,7 +278,7 @@ fun RegisterContent(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.primary,
                         ),
-                        onClick = { vm.isValidateForm() }
+                        onClick = { vm.register() }
                     ) {
                         Text("REGISTRATE")
                     }

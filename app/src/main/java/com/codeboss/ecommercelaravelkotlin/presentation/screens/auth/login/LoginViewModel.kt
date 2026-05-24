@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codeboss.ecommercelaravelkotlin.domain.model.AuthResponse
 import com.codeboss.ecommercelaravelkotlin.domain.useCases.auth.AuthUseCase
-import com.codeboss.ecommercelaravelkotlin.domain.util.Response
+import com.codeboss.ecommercelaravelkotlin.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,7 +26,7 @@ class LoginViewModel @Inject constructor(
 
     var errorMessage by mutableStateOf("")
 
-    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
+    var loginResource by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
     fun onChangeEmail(email: String){
@@ -39,10 +39,10 @@ class LoginViewModel @Inject constructor(
 
     fun login() = viewModelScope.launch {
         if (isValidForm()){
-            loginResponse = Response.Loading
+            loginResource = Resource.Loading
             val result = authUseCase.login(state.email, state.password)
-            loginResponse = result
-            Log.d("LoginViewModel", "Result: $loginResponse")
+            loginResource = result
+            Log.d("LoginViewModel", "Result: $loginResource")
         }
     }
 

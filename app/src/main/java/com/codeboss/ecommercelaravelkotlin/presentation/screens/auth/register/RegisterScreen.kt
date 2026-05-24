@@ -11,6 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.codeboss.ecommercelaravelkotlin.presentation.components.DefaultTopAppBar
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.components.Register
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.components.RegisterContent
 
 @Composable
@@ -30,4 +32,6 @@ fun RegisterScreen(
         },
         bottomBar = {}
     )
+
+    Register(navController)
 }

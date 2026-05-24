@@ -1,4 +1,5 @@
 import org.gradle.accessors.dm.LibrariesForLibs
+import org.gradle.kotlin.dsl.implementation
 
 plugins {
     alias(libs.plugins.android.application)
@@ -74,6 +75,13 @@ dependencies {
 
     //DATA STORE
     implementation(libs.androidx.datastore.preferences)
+
+    //JWT
+    implementation(libs.java.jwt)
+
+    //MOSHI
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.kotlin.codegen)
 
 
     testImplementation(libs.junit)

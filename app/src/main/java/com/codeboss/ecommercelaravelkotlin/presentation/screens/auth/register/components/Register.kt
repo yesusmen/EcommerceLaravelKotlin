@@ -1,6 +1,5 @@
-package com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.login.components
+package com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.components
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,15 +13,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.codeboss.ecommercelaravelkotlin.domain.util.Resource
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppScreen
-import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.login.LoginViewModel
+import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.RegisterViewModel
 
 @Composable
-fun Login(
+fun Register(
     navController: NavHostController,
-    vm: LoginViewModel = hiltViewModel()
-){
+    vm: RegisterViewModel = hiltViewModel()
+) {
 
-    when(val response = vm.loginResource) {
+    when(val response = vm.registerResource) {
 
         Resource.Loading -> {
             Box(
@@ -35,22 +34,22 @@ fun Login(
 
         is Resource.Success -> {
             LaunchedEffect(Unit) {
-                navController.navigate(AppScreen.Home.route) {
-                    popUpTo(AppScreen.Login.route) { inclusive = true }
+                navController.navigate(route = AppScreen.Home.route) {
+                    popUpTo(AppScreen.Register.route) { inclusive = true }
                 }
             }
         }
 
         is Resource.Failure -> {
-            Log.d("Login", "Error: " + response.message)
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
 
         else -> {
-            if (response != null){
+            if (response != null) {
                 Toast.makeText(LocalContext.current, "Hubo un error desconocido", Toast.LENGTH_LONG).show()
             }
         }
+
     }
 
 }

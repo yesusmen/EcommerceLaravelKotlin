@@ -14,7 +14,9 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
 
     @Provides
-    fun provideAuthRepository(authRemoteDataSource: AuthRemoteDataSource): AuthRepository =
+    fun provideAuthRepository(
+        authRemoteDataSource: AuthRemoteDataSource
+    ): AuthRepository =
         AuthRepositoryImpl(authRemoteDataSource)
 
 }
