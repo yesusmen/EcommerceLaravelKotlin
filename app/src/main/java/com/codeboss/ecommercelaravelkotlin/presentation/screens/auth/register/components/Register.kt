@@ -34,7 +34,8 @@ fun Register(
 
         is Resource.Success -> {
             LaunchedEffect(Unit) {
-                navController.navigate(route = AppScreen.Home.route) {
+                vm.saveSession(response.data)
+                navController.navigate(route = AppScreen.Roles.route) {
                     popUpTo(AppScreen.Register.route) { inclusive = true }
                 }
             }

@@ -1,5 +1,6 @@
 package com.codeboss.ecommercelaravelkotlin.data.repository
 
+import com.codeboss.ecommercelaravelkotlin.data.dataSource.local.AuthLocalDataStore
 import com.codeboss.ecommercelaravelkotlin.data.dataSource.remote.AuthRemoteDataSource
 import com.codeboss.ecommercelaravelkotlin.domain.model.AuthResponse
 import com.codeboss.ecommercelaravelkotlin.domain.model.ErrorResponse
@@ -7,11 +8,14 @@ import com.codeboss.ecommercelaravelkotlin.domain.model.User
 import com.codeboss.ecommercelaravelkotlin.domain.repository.AuthRepository
 import com.codeboss.ecommercelaravelkotlin.domain.util.ConvertErrorBody
 import com.codeboss.ecommercelaravelkotlin.domain.util.Resource
-import okhttp3.ResponseBody
+import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
 
-class AuthRepositoryImpl constructor(private val authRemoteDataSource: AuthRemoteDataSource ): AuthRepository {
+class AuthRepositoryImpl constructor(
+    private val authRemoteDataSource: AuthRemoteDataSource,
+    private val authLocalDataStore: AuthLocalDataStore
+): AuthRepository {
 
     override suspend fun login(email: String, password: String): Resource<AuthResponse>{
 
@@ -62,4 +66,8 @@ class AuthRepositoryImpl constructor(private val authRemoteDataSource: AuthRemot
             Resource.Failure(e.message ?: "Error desconocido")
         }
     }
+
+    override suspend fun saveSession(authResponse: AuthResponse) = authLocalDataStore.saveSession(authResponse)
+
+    override fun getSessionData(): Flow<AuthResponse> = authLocalDataStore.getSessionData()
 }

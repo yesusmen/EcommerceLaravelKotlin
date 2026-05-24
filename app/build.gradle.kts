@@ -83,6 +83,10 @@ dependencies {
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)
 
+    //COIL
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

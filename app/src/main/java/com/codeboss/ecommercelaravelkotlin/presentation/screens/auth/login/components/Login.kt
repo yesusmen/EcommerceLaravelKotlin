@@ -35,8 +35,16 @@ fun Login(
 
         is Resource.Success -> {
             LaunchedEffect(Unit) {
-                navController.navigate(AppScreen.Home.route) {
-                    popUpTo(AppScreen.Login.route) { inclusive = true }
+                vm.saveSession(response.data)
+                if (response.data.user?.roles!!.size > 1){
+                    navController.navigate(AppScreen.Roles.route) {
+                        popUpTo(AppScreen.Login.route) { inclusive = true }
+                    }
+                }
+                else {
+                    navController.navigate(AppScreen.ClientHome.route) {
+                        popUpTo(AppScreen.Login.route) { inclusive = true }
+                    }
                 }
             }
         }

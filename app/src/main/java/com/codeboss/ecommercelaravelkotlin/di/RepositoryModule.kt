@@ -1,5 +1,6 @@
 package com.codeboss.ecommercelaravelkotlin.di
 
+import com.codeboss.ecommercelaravelkotlin.data.dataSource.local.AuthLocalDataStore
 import com.codeboss.ecommercelaravelkotlin.data.dataSource.remote.AuthRemoteDataSource
 import com.codeboss.ecommercelaravelkotlin.data.dataSource.remote.AuthRemoteDataSourceImpl
 import com.codeboss.ecommercelaravelkotlin.data.repository.AuthRepositoryImpl
@@ -15,8 +16,9 @@ object RepositoryModule {
 
     @Provides
     fun provideAuthRepository(
-        authRemoteDataSource: AuthRemoteDataSource
+        authRemoteDataSource: AuthRemoteDataSource,
+        authLocalDataStore: AuthLocalDataStore
     ): AuthRepository =
-        AuthRepositoryImpl(authRemoteDataSource)
+        AuthRepositoryImpl(authRemoteDataSource, authLocalDataStore)
 
 }

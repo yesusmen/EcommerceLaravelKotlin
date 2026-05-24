@@ -29,6 +29,22 @@ class LoginViewModel @Inject constructor(
     var loginResource by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
+    init {
+        getSessionData()
+    }
+
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData().collect { data ->
+            if (!data.token.isNullOrBlank()) {
+                loginResource = Resource.Success(data)
+            }
+        }
+    }
+
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
+
     fun onChangeEmail(email: String){
         state = state.copy(email = email)
     }

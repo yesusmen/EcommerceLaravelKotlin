@@ -33,6 +33,10 @@ class RegisterViewModel @Inject constructor(
         private set
 
 
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
+
     fun register() = viewModelScope.launch {
         if (isValidateForm()){
             val user = User(

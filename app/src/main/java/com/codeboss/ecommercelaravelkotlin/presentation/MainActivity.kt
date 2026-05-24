@@ -14,8 +14,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EcommerceLaravelKotlinTheme { //navController = rememberNavController()
-                AppNavigation(startOnHome = false)
+            EcommerceLaravelKotlinTheme {
+                AppNavigation()
             }
         }
     }
