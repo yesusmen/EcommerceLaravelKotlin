@@ -60,6 +60,7 @@ dependencies {
 
     //Navigation
     implementation(libs.androidx.navigation.compose.android)
+    implementation(libs.androidx.navigation.compose)
 
     // Dagger Hilt
     implementation(libs.hilt.android)

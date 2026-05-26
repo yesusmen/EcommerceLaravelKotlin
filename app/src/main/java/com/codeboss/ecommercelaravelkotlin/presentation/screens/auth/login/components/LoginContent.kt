@@ -22,7 +22,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.RemoveRedEye
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,7 +33,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -54,7 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.codeboss.ecommercelaravelkotlin.R
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.auth.AuthScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.login.LoginViewModel
 
 @Composable
@@ -211,7 +209,7 @@ fun LoginContent(
                         )
                         TextButton(
                             onClick = {
-                                navController.navigate(AppScreen.Register.route)
+                                navController.navigate(AuthScreen.Register.route)
                             }
                         ) {
                             Text(

@@ -12,8 +12,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.codeboss.ecommercelaravelkotlin.domain.util.Resource
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.auth.AuthScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.roles.RolesScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.RegisterViewModel
+import com.codeboss.ecommercelaravelkotlin.presentation.screens.roles.RolesScreen
 
 @Composable
 fun Register(
@@ -35,8 +38,8 @@ fun Register(
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navController.navigate(route = AppScreen.Roles.route) {
-                    popUpTo(AppScreen.Register.route) { inclusive = true }
+                navController.navigate(route = Graph.CLIENT) {
+                    popUpTo(Graph.AUTH)
                 }
             }
         }

@@ -20,14 +20,14 @@ import coil3.compose.SubcomposeAsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.codeboss.ecommercelaravelkotlin.domain.model.Rol
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
 
 @Composable
 fun RolesItem(rol: Rol, navController: NavHostController) {
     Column(
         modifier = Modifier.clickable {
             navController.navigate(route = rol.route) {
-                popUpTo(route = AppScreen.Login.route) { inclusive = true }
+                popUpTo(route = Graph.ROLES)
             }
         }
     ) {
@@ -52,23 +52,3 @@ fun RolesItem(rol: Rol, navController: NavHostController) {
         )
     }
 }
-
-/*Spacer(modifier = Modifier.width(20.dp))
-SubcomposeAsyncImage(
-modifier = Modifier.height(150.dp).width(150.dp),
-model = ImageRequest.Builder(context)
-.data(rol.image)
-.crossfade(true)
-.build(),
-loading = {
-    CircularProgressIndicator(modifier = Modifier.requiredSize(40.dp))
-},
-contentDescription = rol.name,
-contentScale = ContentScale.Crop
-)
-Spacer(modifier = Modifier.width(10.dp))
-Text(
-text = rol.name,
-fontSize = 17.sp,
-fontWeight = FontWeight.Bold
-)*/

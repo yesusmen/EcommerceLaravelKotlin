@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.AppNavigation
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.graph.root.RooNavGraph
 import com.codeboss.ecommercelaravelkotlin.presentation.ui.theme.EcommerceLaravelKotlinTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +15,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             EcommerceLaravelKotlinTheme {
-                AppNavigation()
+
+                RooNavGraph()
             }
         }
     }
