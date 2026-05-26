@@ -7,5 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface AuthLocalDataStore {
 
     suspend fun saveSession(authResponse: AuthResponse)
+
+    suspend fun logout()
+
     fun getSessionData(): Flow<AuthResponse>
 }
