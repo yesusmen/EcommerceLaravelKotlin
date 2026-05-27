@@ -1,6 +1,5 @@
-package com.codeboss.ecommercelaravelkotlin.presentation.screens.profile
+package com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.info
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -18,6 +17,7 @@ class ProfileViewModel @Inject constructor(
 ): ViewModel() {
 
     var user by mutableStateOf<User?>(null)
+        private set
 
     init {
         getSessionData()

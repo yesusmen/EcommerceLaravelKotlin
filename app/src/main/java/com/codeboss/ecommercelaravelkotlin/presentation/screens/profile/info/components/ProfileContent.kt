@@ -1,4 +1,4 @@
-package com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.components
+package com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.info.components
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -43,16 +43,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.codeboss.ecommercelaravelkotlin.R
 import com.codeboss.ecommercelaravelkotlin.presentation.MainActivity
-import com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.ProfileViewModel
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.root.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.info.ProfileViewModel
 
 @SuppressLint("ContextCastToActivity")
 @Composable
 fun ProfileContent(
+    navController: NavHostController,
     vm: ProfileViewModel = hiltViewModel(),
-    //paddingValues: PaddingValues,
 ){
     val activity = LocalContext.current as? Activity
 
@@ -164,7 +166,9 @@ fun ProfileContent(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.primary,
                         ),
-                        onClick = {}
+                        onClick = {
+                            navController.navigate(route = "${Graph.PROFILE}/${vm.user?.toJson()}")
+                        }
                     ) {
                         Text(
                             text = "Actualizar información"

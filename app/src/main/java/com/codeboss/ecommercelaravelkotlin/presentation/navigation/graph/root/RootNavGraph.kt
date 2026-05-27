@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.root.Graph
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.graph.auth.AuthNavGraph
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.graph.roles.RolesNavGraph
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.client.home.ClientHomeScreen

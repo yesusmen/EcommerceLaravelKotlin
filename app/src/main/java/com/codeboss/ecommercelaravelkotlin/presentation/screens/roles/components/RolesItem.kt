@@ -20,7 +20,7 @@ import coil3.compose.SubcomposeAsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.codeboss.ecommercelaravelkotlin.domain.model.Rol
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.root.Graph
 
 @Composable
 fun RolesItem(rol: Rol, navController: NavHostController) {

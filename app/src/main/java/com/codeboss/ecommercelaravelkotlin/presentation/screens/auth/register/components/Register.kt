@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.codeboss.ecommercelaravelkotlin.domain.util.Resource
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.root.Graph
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.auth.AuthScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.roles.RolesScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.auth.register.RegisterViewModel

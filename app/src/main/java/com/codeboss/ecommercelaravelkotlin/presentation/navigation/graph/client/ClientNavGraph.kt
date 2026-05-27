@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.codeboss.ecommercelaravelkotlin.presentation.navigation.Graph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.graph.profile.ProfileNavGraph
+import com.codeboss.ecommercelaravelkotlin.presentation.navigation.root.Graph
 import com.codeboss.ecommercelaravelkotlin.presentation.navigation.screen.client.ClientScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.client.category.list.ClientCategoryListScreen
 import com.codeboss.ecommercelaravelkotlin.presentation.screens.client.product.list.ClientProductListScreen
-import com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.ProfileScreen
+import com.codeboss.ecommercelaravelkotlin.presentation.screens.profile.info.ProfileScreen
 
 
 @Composable
@@ -27,7 +28,9 @@ fun ClientNavGraph(navController: NavHostController){
         }
 
         composable(ClientScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+
+        ProfileNavGraph(navController)
     }
 }
